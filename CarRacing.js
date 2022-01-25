@@ -1,10 +1,11 @@
 $(document).ready(function() {
     quantity = 4;
     checkTime = false;
+    checkCarChoose = false;
     money = 1000;
     
+    checkCarClick()
     $("#money").append(money);
-    console.log(car);
 
     $("#chooseBet").click(function() {
         $("#resultBetChoose").text("");
@@ -43,7 +44,7 @@ $(document).ready(function() {
     }) 
     
     $("#play").click(function() {
-        if (checkChoose)
+        if (checkChoose && checkCarChoose)
         {
             if (quantity == 2)
                 time = setInterval(play2, 100);
@@ -124,20 +125,19 @@ function play4() {
     newHumanCar = leftHumanCar + humanCarOffset;
     newBlueCar = leftBlueCar + blueCarOffset;
 
-    if ((newRedCar + 120) <= finishLine)
+    if ((newRedCar + 130) <= finishLine)
         $("#redCar").css("left", newRedCar + "px");
     else
         finish4();
-    if ((newYellowCar + 120) <= finishLine)
+    if ((newYellowCar + 130) <= finishLine)
         $("#yellowCar").css("left", newYellowCar + "px");
     else 
         finish4();
-    
-    if ((newHumanCar + 110) <= finishLine)
+    if ((newHumanCar + 125) <= finishLine)
         $("#humanCar").css("left", newHumanCar + "px");
     else 
         finish4();
-    if ((newBlueCar + 85) <= finishLine)
+    if ((newBlueCar + 125) <= finishLine)
         $("#blueCar").css("left", newBlueCar + "px");
     else 
         finish4();
@@ -204,16 +204,14 @@ function reset() {
     $("#result").text("");
     $("#resultCarChoose").text("");
     $("#resultBetChoose").text("");
+    checkCarChoose = false;
 }
 
 function bet(winningCar) {
     if (checkChoose)
     {
-        carClick = checkCarClick();
-        console.log(carClick);
-        console.log(winningCar);
         if (carClick == winningCar)
-            money = money + (betMoney * quantity);
+            money = money + (betMoney * (quantity - 1));
         else
             money -= betMoney;
         $("#money").text(`Your money: ${money}`);
@@ -221,20 +219,24 @@ function bet(winningCar) {
 }
 
 function checkCarClick() {
-    $("#redCar").click(function(val) {
-        car = val;
-        $("#resultCarChoose").text(`You choose Car ${car}`);
+    $("#redCar").click(function() {
+        carClick = 1;
+        checkCarChoose = true;
+        $("#resultCarChoose").text(`You choose Car ${carClick}`);
     })
-    $("#yellowCar").click(function(val) {
-        car = val;
-        $("#resultCarChoose").text(`You choose Car ${car}`);
+    $("#yellowCar").click(function() {
+        carClick = 2;
+        checkCarChoose = true;
+        $("#resultCarChoose").text(`You choose Car ${carClick}`);
     })
-    $("#humanCar").click(function(val) {
-        car = val;
-        $("#resultCarChoose").text(`You choose Car ${car}`);
+    $("#humanCar").click(function() {
+        carClick = 3;
+        checkCarChoose = true;
+        $("#resultCarChoose").text(`You choose Car ${carClick}`);
     })
-    $("#blueCar").click(function(val) {
-        car = val;
-        $("#resultCarChoose").text(`You choose Car ${car}`);
+    $("#blueCar").click(function() {
+        carClick = 4;
+        checkCarChoose = true;
+        $("#resultCarChoose").text(`You choose Car ${carClick}`);
     })
 }
