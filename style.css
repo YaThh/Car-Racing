@@ -1,5 +1,9 @@
 body {text-align: center;}
 
+h1 {
+    color: lime;
+}
+
 img {
     width: 150px;
     height: 100px;
@@ -26,3 +30,6 @@ div#frame {
     border: 3px solid black;
 }
 
+h3#money {
+    text-align: right;
+}
