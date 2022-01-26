@@ -82,13 +82,13 @@ function play2() {
 
 
     if ((newRedCar + 120) <= finishLine) {
-        redCarTime += 1;
+        redCarTime += 0.1;
         $("#redCar").css("left", newRedCar + "px");
     }
     else 
         finish2();
     if ((newYellowCar + 120) <= finishLine) {
-        yellowCarTime += 1;
+        yellowCarTime += 0.1;
         $("#yellowCar").css("left", newYellowCar + "px");
     }
     else 
@@ -108,19 +108,19 @@ function play3() {
     newHumanCar = leftHumanCar + humanCarOffset;
 
     if ((newRedCar + 120) <= finishLine) {
-        redCarTime += 1;
+        redCarTime += 0.1;
         $("#redCar").css("left", newRedCar + "px");
     }
     else 
         finish3();
     if ((newYellowCar + 120) <= finishLine) {
-        yellowCarTime += 1;
+        yellowCarTime += 0.1;
         $("#yellowCar").css("left", newYellowCar + "px");
     }
     else 
         finish3();
     if ((newHumanCar + 110) <= finishLine) {
-        humanCarTime += 1;
+        humanCarTime += 0.1;
         $("#humanCar").css("left", newHumanCar + "px");
     }
     else 
@@ -143,25 +143,25 @@ function play4() {
     newBlueCar = leftBlueCar + blueCarOffset;
 
     if ((newRedCar + 130) <= finishLine) {
-        redCarTime += 1;
+        redCarTime += 0.1;
         $("#redCar").css("left", newRedCar + "px");
     }
     else
         finish4();
     if ((newYellowCar + 130) <= finishLine) {
-        yellowCarTime += 1; 
+        yellowCarTime += 0.1; 
         $("#yellowCar").css("left", newYellowCar + "px");
     }
     else 
         finish4();
     if ((newHumanCar + 125) <= finishLine) {
-        humanCarTime += 1;
+        humanCarTime += 0.1;
         $("#humanCar").css("left", newHumanCar + "px");
     }
     else 
         finish4();
     if ((newBlueCar + 125) <= finishLine) {
-        blueCarTime += 1;
+        blueCarTime += 0.1;
         $("#blueCar").css("left", newBlueCar + "px");
     }
     else 
@@ -172,12 +172,12 @@ function finish2() {
     clearInterval(time);
     var max = Math.max(newRedCar, newYellowCar);
     if (max == newRedCar) {
-        $("#result").text(`Car 1 Wins - Running Time: ${parseFloat(redCarTime / 10)}s`);
+        $("#result").text(`Car 1 Wins - Running Time: ${Math.round(redCarTime * 100) / 100}s`);
         bet(1);
     }
     else 
     {
-        $("#result").text(`Car 2 Wins - Running Time: ${parseFloat(yellowCarTime / 10)}s`);
+        $("#result").text(`Car 2 Wins - Running Time: ${Math.round(yellowCarTime * 100) / 100}s`);
         bet(2);
     }
     checkReset = true;
@@ -187,15 +187,15 @@ function finish3() {
     clearInterval(time);
     var max = Math.max(newRedCar, newYellowCar, newHumanCar);
     if (max == newRedCar) {
-        $("#result").text(`Car 1 Wins - Running Time: ${parseFloat(redCarTime / 10)}s`);
+        $("#result").text(`Car 1 Wins - Running Time: ${Math.round(redCarTime * 100) / 100}s`);
         bet(1);
     }
     else if (max == newYellowCar) {
-        $("#result").text(`Car 2 Wins - Running Time: ${parseFloat(yellowCarTime / 10)}s`);
+        $("#result").text(`Car 2 Wins - Running Time: ${Math.round(yellowCarTime * 100) / 100}s`);
         bet(2);
     }
     else {
-        $("#result").text(`Car 3 Wins - Running Time: ${parseFloat(humanCarTime / 10)}s`);
+        $("#result").text(`Car 3 Wins - Running Time: ${Math.round(humanCarTime * 100) / 100}s`);
         bet(3);
     }
     checkReset = true;
@@ -205,19 +205,19 @@ function finish4() {
     clearInterval(time);
     var max = Math.max(newRedCar, newYellowCar, newHumanCar, newBlueCar);
     if (max == newRedCar) {
-        $("#result").text(`Car 1 Wins - Running Time: ${parseFloat(redCarTime / 10)}s`);
+        $("#result").text(`Car 1 Wins - Running Time: ${Math.round(redCarTime * 100) / 100}s`);
         bet(1);
     }
     else if (max == newYellowCar) {
-        $("#result").text(`Car 2 Wins - Running Time: ${parseFloat(yellowCarTime / 10)}s`);
+        $("#result").text(`Car 2 Wins - Running Time: ${Math.round(yellowCarTime * 100) / 100}s`);
         bet(2);
     }
     else if (max == newHumanCar) {
-        $("#result").text(`Car 3 Wins - Running Time: ${parseFloat(humanCarTime / 10)}s`);
+        $("#result").text(`Car 3 Wins - Running Time: ${Math.round(humanCarTime * 100) / 100}s`);
         bet(3);
     }
     else {
-        $("#result").text(`Car 4 Wins - Running Time: ${parseFloat(blueCarTime / 10)}s`);
+        $("#result").text(`Car 4 Wins - Running Time: ${Math.round(blueCarTime * 100) / 100}s`);
         bet(4);
     }
     checkReset = true;
