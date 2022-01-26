@@ -33,3 +33,41 @@ div#frame {
 h3#money {
     text-align: right;
 }
+
+button {
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+}
+
+button#play {
+    background-color: #4AFF62;
+}
+
+button#play:hover {
+    background-color: #91FFA0;
+}
+
+button#stop {
+    background-color: #FF2626;
+}
+
+button#stop:hover {
+    background-color: #FF7B7B;
+}
+
+button#reset {
+    background-color: #F8FF07;
+}
+
+button#reset:hover {
+    background-color: #FCFF88;
+}
+
+button#chooseBet, button#chooseCar {
+    background-color: #FF9A12;
+}
+
+button#chooseBet:hover, button#chooseCar:hover {
+    background-color: #FBC276;
+}
