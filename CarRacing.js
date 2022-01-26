@@ -15,18 +15,18 @@ $(document).ready(function() {
     $("#chooseBet").click(function() {
         $("#resultBetChoose").text("");
         if (money <= 0) {
-            checkChoose = false;
+            checkBetChoosse = false;
             $("#resultBetChoose").append("You don't have enough money");
         }
         else {
             betMoney = $("#betMoney").val();
-            if (betMoney < 0 || betMoney > money) {
+            if (betMoney < 0 || betMoney > money || betMoney == "") {
                 $("#resultBetChoose").append("Your bet is invalid");
-                checkChoose = false;
+                checkBetChoosse = false;
             }
             else {
                 $("#resultBetChoose").append(`Your bet is ${betMoney}`);
-                checkChoose = true;
+                checkBetChoosse = true;
             }
         }
     })
@@ -49,7 +49,7 @@ $(document).ready(function() {
     }) 
     
     $("#play").click(function() {
-        if (checkChoose && checkCarChoose)
+        if (checkBetChoosse && checkCarChoose)
         {
             if (quantity == 2)
                 time = setInterval(play2, 100);
@@ -233,6 +233,7 @@ function reset() {
     $("#resultCarChoose").text("");
     $("#resultBetChoose").text("");
     checkCarChoose = false;
+    checkBetChoosse = false;
     redCarTime = 0;
     yellowCarTime = 0;
     humanCarTime = 0;
@@ -240,7 +241,7 @@ function reset() {
 }
 
 function bet(winningCar) {
-    if (checkChoose)
+    if (checkBetChoosse)
     {
         if (carClick == winningCar)
             money = money + (betMoney * (quantity - 1));
