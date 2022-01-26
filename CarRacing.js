@@ -7,6 +7,7 @@ $(document).ready(function() {
     yellowCarTime = 0;
     humanCarTime = 0;
     blueCarTime = 0;
+    checkReset = false;
     
     checkCarClick()
     $("#money").append(money);
@@ -65,7 +66,8 @@ $(document).ready(function() {
     })
 
     $("#reset").click(function() {
-        reset();
+        if (checkReset)
+            reset();
     });
 })
 
@@ -178,6 +180,7 @@ function finish2() {
         $("#result").text(`Car 2 Wins - Running Time: ${parseFloat(yellowCarTime / 10)}s`);
         bet(2);
     }
+    checkReset = true;
 }
 
 function finish3() {
@@ -195,6 +198,7 @@ function finish3() {
         $("#result").text(`Car 3 Wins - Running Time: ${parseFloat(humanCarTime / 10)}s`);
         bet(3);
     }
+    checkReset = true;
 }
 
 function finish4() {
@@ -216,6 +220,7 @@ function finish4() {
         $("#result").text(`Car 4 Wins - Running Time: ${parseFloat(blueCarTime / 10)}s`);
         bet(4);
     }
+    checkReset = true;
 }
 
 function reset() {
